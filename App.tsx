@@ -1,20 +1,23 @@
+import { ThemeProvider } from '@shopify/restyle';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import Navigation from 'navigation';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import theme from 'utils/theme';
+import { SWRConfig } from "swr"
 
 export default function App() {
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ThemeProvider theme={theme}>
+      <SafeAreaProvider>
+        <SWRConfig>
+          <Navigation />
+        </SWRConfig>
+        <StatusBar translucent />
+      </SafeAreaProvider>
+    </ThemeProvider>
+    
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
